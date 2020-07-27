@@ -3,7 +3,7 @@ function Turtle3D(scene) {
     this.scene = scene;
     this.position = new THREE.Vector3();
     this.enable_pen = true;
-    this.line_width = 0;
+    this.line_width = 0.25;
     //this.line_color = 0xFFFFFF; // 廃止。
     //this.fill_color = 0xFFFFFF; // 廃止。
     this.gyro = new THREE.Matrix3();
@@ -50,7 +50,7 @@ function Turtle3D(scene) {
         this.look_y();
         //this.line_color = 0xFFFFFF; // 廃止。
         //this.fill_color = 0xFFFFFF; // 廃止。
-        this.line_width = 0;
+        this.line_width = 0.25;
     };
     this.reset();
 
