@@ -4,8 +4,8 @@ function Turtle3D(scene) {
     this.position = new THREE.Vector3();
     this.enable_pen = true;
     this.line_width = 0;
-    this.line_color = 0xFFFFFF;
-    this.fill_color = 0xFFFFFF;
+    //this.line_color = 0xFFFFFF; // 廃止。
+    //this.fill_color = 0xFFFFFF; // 廃止。
     this.gyro = new THREE.Matrix3();
     this.geometry = new THREE.Geometry();
 
@@ -48,8 +48,8 @@ function Turtle3D(scene) {
     this.reset = function() {
         this.reset_pos();
         this.look_y();
-        this.line_color = 0xFFFFFF;
-        this.fill_color = 0xFFFFFF;
+        //this.line_color = 0xFFFFFF; // 廃止。
+        //this.fill_color = 0xFFFFFF; // 廃止。
         this.line_width = 0;
     };
     this.reset();
@@ -84,7 +84,7 @@ function Turtle3D(scene) {
     }
 
     // 線を追加する関数。
-    this.add_line = function(pos0, pos1, line_width = this.line_width, line_color = this.line_color) {
+    this.add_line = function(pos0, pos1, line_width = this.line_width) {
         var direction = new THREE.Vector3().subVectors(pos1, pos0);
         var orientation = new THREE.Matrix4();
         orientation.lookAt(pos0, pos1, new THREE.Object3D().up);
@@ -105,7 +105,7 @@ function Turtle3D(scene) {
         this.geometry.mergeMesh(line);
     }
     // 三角形を追加する関数。
-    this.add_triangle = function(pos0, pos1, pos2, fill_color = this.fill_color) {
+    this.add_triangle = function(pos0, pos1, pos2) {
         var geometry = new THREE.Geometry();
         geometry.vertices.push(pos0);
         geometry.vertices.push(pos1);
@@ -118,7 +118,7 @@ function Turtle3D(scene) {
         this.geometry.mergeMesh(triangle);
     }
     // 球体を追加する関数。
-    this.add_sphere = function(radius, pos = this.get_pos(), fill_color = this.fill_color) {
+    this.add_sphere = function(radius, pos = this.get_pos()) {
         var geometry = new THREE.SphereGeometry(radius, 6, 6);
         //var material = new THREE.MeshBasicMaterial({color: fill_color});
         //var sphere = new THREE.Mesh(geometry, material);
